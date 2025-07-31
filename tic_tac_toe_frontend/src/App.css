@@ -1,0 +1,169 @@
+/* CSS Variables for Theme Management */
+:root {
+  /* Tic Tac Toe Light Theme Palette */
+  --primary: #1976d2;      /* Primary blue */
+  --secondary: #424242;    /* Secondary gray */
+  --accent: #ffea00;       /* Accent yellow */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f7f9fb;
+  --text-primary: #222;
+  --text-secondary: #575f69;
+  --border-color: #eaeaea;
+  --button-bg: #1976d2;
+  --button-text: #fff;
+  --square-size: min(18vw, 70px);
+}
+
+/* Minimalistic Tic Tac Toe Layout */
+
+.ttt-root {
+  min-height: 100vh;
+  width: 100vw;
+  background: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ttt-main {
+  background: var(--bg-secondary);
+  border-radius: 18px;
+  box-shadow: 0 2px 16px rgba(33,39,54,0.09), 0 2px 4px rgba(33,39,54,0.02);
+  padding: 2.2em 1.0em 1.8em;
+  min-width: 310px;
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.ttt-title {
+  font-size: 2.3rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: var(--primary);
+  margin-bottom: 0.8em;
+  text-align: center;
+  line-height: 1.15;
+}
+
+.ttt-status {
+  margin-bottom: 1.1em;
+  font-size: 1.16rem;
+  font-weight: 500;
+  color: var(--secondary);
+  min-height: 1.4em;
+  text-align: center;
+}
+
+.ttt-board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0.7em 0 0.5em 0;
+}
+
+.ttt-board-row {
+  display: flex;
+}
+
+.ttt-square {
+  width: var(--square-size);
+  height: var(--square-size);
+  background: var(--bg-primary);
+  border: 2.5px solid var(--primary);
+  border-radius: 12px;
+  margin: 0.16em;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .13s, border-color .18s;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+}
+
+.ttt-square:empty:hover, .ttt-square:empty:focus {
+  background: var(--accent);
+  opacity: 0.8;
+  border-color: var(--accent);
+  color: var(--primary);
+}
+
+.ttt-square.winner {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--primary);
+  animation: flashwinner 0.28s alternate 2;
+}
+
+@keyframes flashwinner {
+  0% { background: var(--accent);   }
+  60% { background: #fffbe7; }
+  100% { background: var(--accent);}
+}
+
+.ttt-restart-btn {
+  margin-top: 1.15em;
+  padding: 0.56em 2.2em;
+  background: var(--primary);
+  color: var(--button-text);
+  font-size: 1.06rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 39px;
+  box-shadow: 0 1.5px 7px rgba(28,29,51,0.10);
+  letter-spacing: 0.015em;
+  cursor: pointer;
+  outline: none;
+  transition: background 0.18s, box-shadow 0.13s;
+}
+
+.ttt-restart-btn:hover, .ttt-restart-btn:focus {
+  background: var(--accent);
+  color: var(--primary);
+  box-shadow: 0 2.5px 12px rgba(255,234,0,0.13);
+}
+
+.ttt-footer {
+  margin-top: 1.5em;
+  color: var(--secondary);
+  font-size: 1rem;
+  text-align: center;
+  opacity: 0.88;
+}
+
+.accent {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .ttt-main {
+    min-width: 95vw;
+    font-size: 14px;
+    padding: 0.8em 0.3em 1.2em 0.3em;
+  }
+  .ttt-title {
+    font-size: 1.5rem;
+  }
+  .ttt-board-row {
+    /* Ensure board fits small screens */
+    margin: 0;
+  }
+  .ttt-square {
+    font-size: 1.55rem;
+    min-width: 47px;
+    min-height: 47px;
+    border-radius: 8px;
+  }
+  .ttt-restart-btn {
+    font-size: 1rem;
+    padding: 0.44em 1.3em;
+  }
+}
